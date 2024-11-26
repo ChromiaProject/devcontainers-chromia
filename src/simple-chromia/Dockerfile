@@ -28,7 +28,6 @@ ENV PGPORT 5432
 ENV PGDATABASE postchain
 ENV PGUSER postchain
 ENV PGPASSWORD postchain
-RUN service postgresql start && psql -c "\\dt"
 
 # Install CHR and PMC
 RUN curl -fsSL https://apt.chromia.com/chromia.gpg > /usr/share/keyrings/chromia.gpg
@@ -36,7 +35,5 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/chromia.gpg] https://apt
 RUN apt-get update
 RUN apt-get download chr:amd64
 RUN dpkg --force-architecture --ignore-depends=chr -i chr_*.deb || true; rm chr_*_amd64.deb
-RUN chr --version
 RUN apt-get download pmc:amd64
 RUN dpkg --force-architecture -i pmc_*.deb && rm pmc_*_amd64.deb
-RUN pmc --version
