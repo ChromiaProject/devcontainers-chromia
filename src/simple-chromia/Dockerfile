@@ -23,11 +23,11 @@ RUN echo "sudo service postgresql start" >> ~vscode/.profile
 # Postchain default database 
 RUN service postgresql start && sudo -u postgres psql -U postgres -c "CREATE DATABASE postchain WITH TEMPLATE = template0 LC_COLLATE = 'C.UTF-8' LC_CTYPE = 'C.UTF-8' ENCODING 'UTF-8';" -c "CREATE ROLE postchain LOGIN ENCRYPTED PASSWORD 'postchain'; GRANT ALL ON DATABASE postchain TO postchain;"
 # Add default database, user, and password into the global environment
-ENV PGHOST localhost
-ENV PGPORT 5432
-ENV PGDATABASE postchain
-ENV PGUSER postchain
-ENV PGPASSWORD postchain
+ENV PGHOST=localhost
+ENV PGPORT=5432
+ENV PGDATABASE=postchain
+ENV PGUSER=postchain
+ENV PGPASSWORD=postchain
 
 # Install CHR and PMC
 RUN curl -fsSL https://apt.chromia.com/chromia.gpg > /usr/share/keyrings/chromia.gpg
