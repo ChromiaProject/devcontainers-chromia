@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/java-postgres
 {
 	"name": "Simple Chromia",
-	"dockerFile": "../Dockerfile",
+	"dockerFile": "Dockerfile",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "customizations": {
         "vscode": {
