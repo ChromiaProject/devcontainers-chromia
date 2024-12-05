@@ -11,5 +11,6 @@
                 "redhat.vscode-yaml"
             ]
         }
-    }
+    }, // Forward Chromia ports to host
+    "forwardPorts": [7740, 7750]
 }
