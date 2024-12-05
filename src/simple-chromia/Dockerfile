@@ -16,6 +16,9 @@ RUN apt-get update
 RUN curl -fsSL https://deb.nodesource.com/setup_23.x | bash
 RUN apt-get install -y nodejs
 
+# Start on CHR completions (needs to go in before Postgres service start)
+RUN echo "source ~/.chr-completion.bash" >> ~vscode/.profile
+
 # Postgres
 RUN apt-get install -y postgresql-client postgresql postgresql-contrib
 RUN mkdir -p /var/lib/postgresql/data
@@ -37,3 +40,7 @@ RUN apt-get download chr:amd64
 RUN dpkg --force-architecture --ignore-depends=chr -i chr_*.deb || true; rm chr_*_amd64.deb
 RUN apt-get download pmc:amd64
 RUN dpkg --force-architecture -i pmc_*.deb && rm pmc_*_amd64.deb
+
+# Complete completions for chr
+RUN chr --generate-completion=bash > ~vscode/.chr-completion.bash
+RUN chown vscode ~vscode/.chr-completion.bash
