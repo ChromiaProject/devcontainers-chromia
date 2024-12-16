@@ -42,10 +42,10 @@ RUN apt-get download pmc:amd64
 RUN dpkg --force-architecture -i pmc_*.deb && rm pmc_*_amd64.deb
 
 # Wrap a warning around pmc in case this is running in a remote environment
-# Copy the warn_once script
 COPY warn_once.sh /usr/local/bin/warn_once.sh
-RUN echo "source /usr/local/bin/warn_once.sh" >> ~vscode/.profile
 RUN chmod +x /usr/local/bin/warn_once.sh
+RUN echo "alias pmc='warn_once \"Be careful using the pmc command to handle key material in remote enviroments\!\" \"pmc_command\" pmc'" >> ~vscode/.bash_aliases
+RUN chown vscode ~vscode/.bash_aliases
 
 # Complete completions for chr
 RUN chr --generate-completion=bash > ~vscode/.chr-completion.bash

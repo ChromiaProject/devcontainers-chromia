@@ -24,6 +24,3 @@ warn_once() {
     # Execute the command
     "$@"
 }
-
-# Create an alias for the pmc command with the warning function
-alias pmc='warn_once "Be careful using the pmc command to handle key material in remote enviroments!" "pmc_command" pmc'
