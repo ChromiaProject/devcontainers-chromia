@@ -41,6 +41,12 @@ RUN dpkg --force-architecture --ignore-depends=chr -i chr_*.deb || true; rm chr_
 RUN apt-get download pmc:amd64
 RUN dpkg --force-architecture -i pmc_*.deb && rm pmc_*_amd64.deb
 
+# Wrap a warning around pmc in case this is running in a remote environment
+# Copy the warn_once script
+COPY warn_once.sh /usr/local/bin/warn_once.sh
+RUN echo "source /usr/local/bin/warn_once.sh" >> ~vscode/.profile
+RUN chmod +x /usr/local/bin/warn_once.sh
+
 # Complete completions for chr
 RUN chr --generate-completion=bash > ~vscode/.chr-completion.bash
 RUN chown vscode ~vscode/.chr-completion.bash
