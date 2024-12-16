@@ -1,6 +1,6 @@
 {
     "id": "simple-chromia",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "name": "Simple Chromia",
     "description": "A basic environment for Rell-only development.",
     "documentationURL": "",

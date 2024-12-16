@@ -11,8 +11,8 @@ check "completions" source ~/.profile && complete -p chr
 check "bun" bun -v
 check "pnpm" pnpm -v
 check "yarn" yarn -v
-check "pmc alias" alias pmc
-check "pmc" pmc --version
+check "pmc alias" source ~vscode/.bash_aliases && alias pmc
+check "pmc" source ~vscode/.bash_aliases && pmc --version
 
 # Report result
 reportResults
