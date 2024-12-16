@@ -44,3 +44,6 @@ RUN dpkg --force-architecture -i pmc_*.deb && rm pmc_*_amd64.deb
 # Complete completions for chr
 RUN chr --generate-completion=bash > ~vscode/.chr-completion.bash
 RUN chown vscode ~vscode/.chr-completion.bash
+
+# Install commonly used npm tools
+RUN npm install -g bun pnpm

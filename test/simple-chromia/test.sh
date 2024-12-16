@@ -9,6 +9,9 @@ check "chr" chr --version
 check "pmc" pmc --version
 check "profile" cat ~/.profile
 check "completions" source ~/.profile && complete -p chr
+check "bun" bun -v
+check "pnpm" pnpm -v
+check "yarn" yarn -v
 
 # Report result
 reportResults
