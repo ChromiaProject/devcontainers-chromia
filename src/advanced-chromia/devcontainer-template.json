@@ -1,0 +1,11 @@
+{
+    "id": "simple-chromia",
+    "version": "0.0.1",
+    "name": "Advanced Chromia",
+    "description": "An advanced environment for Chromia development.",
+    "documentationURL": "",
+    "licenseURL": "",
+    "platforms": [
+        "Any"
+    ]
+}
