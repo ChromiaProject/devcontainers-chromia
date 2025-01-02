@@ -9,10 +9,10 @@ services:
       dockerfile: Dockerfile
     environment:
       # NOTE: POSTGRES_DB/USER/PASSWORD should match values in db container
-        POSTGRES_PASSWORD: postchain
-        POSTGRES_USER: postchain
-        POSTGRES_DB: postchain
-        POSTGRES_HOSTNAME: postgresdb
+        PGPASSWORD: postchain
+        PGUSER: postchain
+        PGDATABASE: postchain
+        PGHOST: postgresdb
 
     volumes:
       - ../..:/workspaces:cached

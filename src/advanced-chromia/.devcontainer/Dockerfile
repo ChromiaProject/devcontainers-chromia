@@ -16,6 +16,9 @@ RUN apt-get update
 RUN curl -fsSL https://deb.nodesource.com/setup_23.x | bash
 RUN apt-get install -y nodejs
 
+# We will want a postgres client too
+RUN apt-get install -y postgresql-client
+
 # Install CHR and PMC
 RUN curl -fsSL https://apt.chromia.com/chromia.gpg > /usr/share/keyrings/chromia.gpg
 RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/chromia.gpg] https://apt.chromia.com stable main" | tee /etc/apt/sources.list.d/chromia.list

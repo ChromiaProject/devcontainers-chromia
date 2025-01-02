@@ -4,7 +4,7 @@ source test-utils.sh
 
 # Template specific tests
 check "distro" lsb_release -c
-check "psql" psql postchain -c "\\dt"
+check "psql" psql -c "\\dt"
 check "chr" chr --version
 check "pmc" pmc --version
 
