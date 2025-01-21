@@ -23,4 +23,14 @@ echo "Contract deployed at address: '$DEPLOYED_ADDRESS'"
 echo "Verifying deployment..."
 cast call $DEPLOYED_ADDRESS "balanceOf(address owner) (uint256)" $DEPLOYED_ADDRESS
 
+# Step 4: Build a bridge
+apk add nodejs npm
+npm install -g yarn cross-env
+cd /app/evm/libs/postchain-eif/postchain-eif-contracts
+yarn install
+yarn compile
+yarn deploy --network localhost --app $CHR_DEFAULT_NODE_ADDRESS --offset 2
+
+yarn allowToken:bridge --network localhost --bridge-address $EVM_BRIDGE_ADDRESS --token-address $CHR_DEFAULT_NODE_ADDRESS
+
 sleep infinity
