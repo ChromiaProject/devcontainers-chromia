@@ -32,8 +32,5 @@ RUN apt-get download pmc:amd64
 RUN dpkg --force-architecture -i pmc_*.deb && rm pmc_*_amd64.deb
 
 # Install the demo Bridge UX
-RUN cd /opt
-RUN git clone https://bitbucket.org/chromawallet/chromia-bridge-demo.git
-RUN cd chromia-bridge-demo/rell
-RUN chr build
-RUN yq -i 'blockchains.event_receiver.eif.chains.local.contracts = strenv(EVM_BRIDGE_ADDRESS)' ./rell/chromia.yml
+RUN cd /opt && git clone https://bitbucket.org/chromawallet/chromia-bridge-demo.git
+RUN cd /opt/chromia-bridge-demo/rell && yq -i ".blockchains.event_receiver.eif.chains.local.contracts = strenv(EVM_BRIDGE_ADDRESS)" chromia.yml
