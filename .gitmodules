@@ -1,3 +1,0 @@
-[submodule "src/advanced-chromia/evm/libs/postchain-eif"]
-	path = src/advanced-chromia/evm/libs/postchain-eif
-	url = https://gitlab.com/chromaway/core/postchain-eif.git
