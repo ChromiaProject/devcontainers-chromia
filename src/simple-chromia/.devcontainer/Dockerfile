@@ -23,8 +23,10 @@ RUN echo "source ~/.chr-completion.bash" >> ~vscode/.profile
 RUN apt-get install -y postgresql-client postgresql postgresql-contrib
 RUN mkdir -p /var/lib/postgresql/data
 RUN echo "sudo service postgresql start" >> ~vscode/.profile
+
 # Postchain default database 
 RUN service postgresql start && sudo -u postgres psql -U postgres -c "CREATE DATABASE postchain WITH TEMPLATE = template0 LC_COLLATE = 'C.UTF-8' LC_CTYPE = 'C.UTF-8' ENCODING 'UTF-8';" -c "CREATE ROLE postchain LOGIN ENCRYPTED PASSWORD 'postchain'; GRANT ALL ON DATABASE postchain TO postchain;"
+
 # Add default database, user, and password into the global environment
 ENV PGHOST=localhost
 ENV PGPORT=5432
